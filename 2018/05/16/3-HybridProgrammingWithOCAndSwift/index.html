@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="stackoverflow上关于Objective-C关注度比较高的问题系列链接  Hybrid programming with Objective-C &amp;amp; Swift原文链接《how to call objective-c code from swift》本文Github链接，含代码 关键词  Objective-CSwift    在Swfit工程中使用Objective-C的类s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3.HybridProgrammingWithOCAndSwift">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/3-HybridProgrammingWithOCAndSwift/index.html">
+<meta property="og:site_name" content="JixinZhang">
+<meta property="og:description" content="stackoverflow上关于Objective-C关注度比较高的问题系列链接  Hybrid programming with Objective-C &amp;amp; Swift原文链接《how to call objective-c code from swift》本文Github链接，含代码 关键词  Objective-CSwift    在Swfit工程中使用Objective-C的类s">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2409226-fbbc1564c7731f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2409226-bf712e162601e8a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2409226-fbbc1564c7731f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2409226-bf712e162601e8a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-05-16T09:38:35.141Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3.HybridProgrammingWithOCAndSwift">
+<meta name="twitter:description" content="stackoverflow上关于Objective-C关注度比较高的问题系列链接  Hybrid programming with Objective-C &amp;amp; Swift原文链接《how to call objective-c code from swift》本文Github链接，含代码 关键词  Objective-CSwift    在Swfit工程中使用Objective-C的类s">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2409226-fbbc1564c7731f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/16/3-HybridProgrammingWithOCAndSwift/"/>
+
+
+
+
+
+  <title>3.HybridProgrammingWithOCAndSwift | JixinZhang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JixinZhang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">JixinZhang's Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/3-HybridProgrammingWithOCAndSwift/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jixin Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JixinZhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">3.HybridProgrammingWithOCAndSwift</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-16T17:37:14+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>stackoverflow上关于Objective-C关注度比较高的问题系列<br><a href="https://stackoverflow.com/questions/tagged/objective-c?sort=frequent&amp;pageSize=15" target="_blank" rel="noopener">链接</a></p>
+</blockquote>
+<h1 id="Hybrid-programming-with-Objective-C-amp-Swift"><a href="#Hybrid-programming-with-Objective-C-amp-Swift" class="headerlink" title="Hybrid programming with Objective-C &amp; Swift"></a>Hybrid programming with Objective-C &amp; Swift</h1><p>原文链接<a href="https://stackoverflow.com/questions/24002369/how-to-call-objective-c-code-from-swift" target="_blank" rel="noopener">《how to call objective-c code from swift》</a><br>本文<a href="https://github.com/JixinZhang/ZOCFrequentQuestions/blob/master/3.HybridProgrammingWithOCAndSwift/3.HybridProgrammingWithOCAndSwift.md" target="_blank" rel="noopener">Github链接</a>，含代码</p>
+<p>关键词</p>
+<blockquote>
+<p>Objective-C<br>Swift  </p>
+</blockquote>
+<h2 id="在Swfit工程中使用Objective-C的类"><a href="#在Swfit工程中使用Objective-C的类" class="headerlink" title="在Swfit工程中使用Objective-C的类"></a>在Swfit工程中使用Objective-C的类</h2><h3 id="step-1：添加Objective-C的文件"><a href="#step-1：添加Objective-C的文件" class="headerlink" title="step 1：添加Objective-C的文件"></a>step 1：添加Objective-C的文件</h3><p>添加一个<code>.m</code>和<code>.h</code>文件，并且命名为<code>CustomObject</code></p>
+<h3 id="step-2：添加Bridging-Header"><a href="#step-2：添加Bridging-Header" class="headerlink" title="step 2：添加Bridging Header"></a>step 2：添加Bridging Header</h3><p>当你在添加<code>.m</code>文件的时候，Xcode会马上弹框展示你是否要配置bridging header，如下图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2409226-fbbc1564c7731f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.BridgingHeader.png"></p>
+<p>点击<strong>YES</strong></p>
+<p>如果你没有看到这个弹框，或者误操作删除了工程的bridging header文件。<br>1)添加一个<code>.h</code>文件然后命名为<code>&lt;#YourProjectName#&gt;-Bridging-Header.h</code>；<br>2)根据如下图片展示的步骤将上一步创建的bridging header 文件 link到你的工程中；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2409226-bf712e162601e8a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.ConfigBridgingHeader.png"></p>
+<p><strong>Note</strong><br>上图所示的绝对路径不太合理，让你的工程在别人的电脑运行时，这个路径就肯定不对了。可以用<code>$(SRCROOT)</code>来替换你工程的绝对路径，类似这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(SRCROOT)/UsingOCInSwift/UsingOCInSwift-Bridging-Header.h</span><br></pre></td></tr></table></figure>
+<h3 id="step-3：在里的CustomObject类中添加代码"><a href="#step-3：在里的CustomObject类中添加代码" class="headerlink" title="step 3：在里的CustomObject类中添加代码"></a>step 3：在里的CustomObject类中添加代码</h3><blockquote>
+<p>CustomObject.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#import &lt;Foundation/Foundation.h&gt;</span><br><span class="line"></span><br><span class="line">@interface CustomObject : NSObject</span><br><span class="line"></span><br><span class="line">@property (strong, nonatomic) id someProperty;</span><br><span class="line"></span><br><span class="line">- (void) someMethod;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>CustomObject.m</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;CustomObject.h&quot;</span><br><span class="line"></span><br><span class="line">@implementation CustomObject </span><br><span class="line"></span><br><span class="line">- (void) someMethod &#123;</span><br><span class="line">    NSLog(@&quot;SomeMethod Ran&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h3 id="step-4：将Objective-C类添加到Bridging-Header中"><a href="#step-4：将Objective-C类添加到Bridging-Header中" class="headerlink" title="step 4：将Objective-C类添加到Bridging-Header中"></a>step 4：将Objective-C类添加到Bridging-Header中</h3><blockquote>
+<p>YourProject-Bridging-Header.h</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;CustomObject.h&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="setp-5：在Swift类中使用你的Objective-C类"><a href="#setp-5：在Swift类中使用你的Objective-C类" class="headerlink" title="setp 5：在Swift类中使用你的Objective-C类"></a>setp 5：在Swift类中使用你的Objective-C类</h3><blockquote>
+<p>ViewController.swift</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">class ViewController: UIViewController &#123;</span><br><span class="line">    </span><br><span class="line">    var instanceOfCustomObject: CustomObject = CustomObject()</span><br><span class="line"></span><br><span class="line">    override func viewDidLoad() &#123;</span><br><span class="line">        super.viewDidLoad()</span><br><span class="line">        instanceOfCustomObject.someProperty = &quot;Hello World&quot;</span><br><span class="line">        print(instanceOfCustomObject.someProperty)</span><br><span class="line">        instanceOfCustomObject.someMethod()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override func didReceiveMemoryWarning() &#123;</span><br><span class="line">        super.didReceiveMemoryWarning()</span><br><span class="line">        // Dispose of any resources that can be recreated.</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此处不需要import某个头文件，import头文件这件事已经由Bridging-Header代劳了</p>
+<h2 id="在Objective-C工程中使用Swfit的类"><a href="#在Objective-C工程中使用Swfit的类" class="headerlink" title="在Objective-C工程中使用Swfit的类"></a>在Objective-C工程中使用Swfit的类</h2><h3 id="step-1：创建一个swift文件"><a href="#step-1：创建一个swift文件" class="headerlink" title="step 1：创建一个swift文件"></a>step 1：创建一个swift文件</h3><blockquote>
+<p>MySwiftObject.swift</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import UIKit</span><br><span class="line"></span><br><span class="line">class MySwiftObject: NSObject &#123;</span><br><span class="line">    public var someProperty: String = &quot;Some Initializer Val&quot;</span><br><span class="line">    </span><br><span class="line">    public func someFunction(someArg:AnyObject) -&gt; String &#123;</span><br><span class="line">        let retrunVal = &quot;You sent me : &quot; + (someArg as! String)</span><br><span class="line">        return retrunVal</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建一个<code>MySwiftObject.swift</code>文件，一旦你创建文件Xcode就会给你弹框提示如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2409226-fbbc1564c7731f1a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.BridgingHeader.png"></p>
+<p>点击<strong>YES</strong></p>
+<p>如果你没有看到这个弹框，或者误操作删除了工程的bridging header文件。<br>1)添加一个<code>.h</code>文件然后命名为<code>&lt;#YourProjectName#&gt;-Bridging-Header.h</code>；<br>2)根据如下图片展示的步骤将上一步创建的bridging header 文件 link到你的工程中；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2409226-bf712e162601e8a6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.ConfigBridgingHeader.png"></p>
+<p><strong>Note</strong><br>上图所示的绝对路径不太合理，让你的工程在别人的电脑运行时，这个路径就肯定不对了。可以用<code>$(SRCROOT)</code>来替换你工程的绝对路径，类似这样:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(SRCROOT)/UsingOCInSwift/UsingOCInSwift-Bridging-Header.h</span><br></pre></td></tr></table></figure>
+<p><strong>这里的操作和向swift中添加Objective-C文件一样</strong></p>
+<h3 id="step-2：向Objective—C文件中导入Swift头文件"><a href="#step-2：向Objective—C文件中导入Swift头文件" class="headerlink" title="step 2：向Objective—C文件中导入Swift头文件"></a>step 2：向Objective—C文件中导入Swift头文件</h3><blockquote>
+<p>ViewController.m</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;&lt;#YourProjectName#&gt;-Swift.h&quot;</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">`&lt;#YourProjectName#&gt;-Swift.h`这个文件在你添加Swift文件时自动添加到了你的工程中，但是在工程的目录中你看不到它。可以通过import点进去看一下，正在文件的最后有你熟悉的OC代码，如下：</span><br><span class="line"></span><br><span class="line">![3.Project-Swift.png](https://upload-images.jianshu.io/upload_images/2409226-39cc3f8ec9896849.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### step 3：使用Swift类</span><br><span class="line"></span><br><span class="line">&gt; ViewController.m</span><br></pre></td></tr></table></figure>
+<ul>
+<li>(void)viewDidLoad {<br>  [super viewDidLoad];<br>  MySwiftObject <em>myOb = [[MySwiftObject alloc] init];<br>  NSLog(@”MyOb.someProperty: %@”, myOb.someProperty);<br>  myOb.someProperty = @”Hello world”;<br>  NSLog(@”MyOb.someProperty: %@”, myOb.someProperty);<br>  NSString </em> retString = [myOb someFunctionWithSomeArg:@”Arg”];<br>  NSLog(@”RetString: %@”, retString);<br>}<br><code>`</code></li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/2-CreateDelegate/" rel="next" title="2.CreateDelegate">
+                <i class="fa fa-chevron-left"></i> 2.CreateDelegate
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/16/4-iOS中属性修饰符/" rel="prev" title="4.iOS中属性修饰符">
+                4.iOS中属性修饰符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jixin Zhang</p>
+              <p class="site-description motion-element" itemprop="description">我知道天边还很远，有万水还有千山，只是路边的袅袅炊烟难得留恋；大风吹脆弱的先睡，孤独的鸟儿先飞，怎么越长大却越飞不到家；-- Escape Plan</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/JixinZhang/" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.jianshu.com/u/dded38a3abd2" target="_blank" title="Jianshu">
+                      
+                        <i class="fa fa-fw fa-简书"></i>Jianshu</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hybrid-programming-with-Objective-C-amp-Swift"><span class="nav-number">1.</span> <span class="nav-text">Hybrid programming with Objective-C &amp; Swift</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在Swfit工程中使用Objective-C的类"><span class="nav-number">1.1.</span> <span class="nav-text">在Swfit工程中使用Objective-C的类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step-1：添加Objective-C的文件"><span class="nav-number">1.1.1.</span> <span class="nav-text">step 1：添加Objective-C的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-2：添加Bridging-Header"><span class="nav-number">1.1.2.</span> <span class="nav-text">step 2：添加Bridging Header</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-3：在里的CustomObject类中添加代码"><span class="nav-number">1.1.3.</span> <span class="nav-text">step 3：在里的CustomObject类中添加代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-4：将Objective-C类添加到Bridging-Header中"><span class="nav-number">1.1.4.</span> <span class="nav-text">step 4：将Objective-C类添加到Bridging-Header中</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setp-5：在Swift类中使用你的Objective-C类"><span class="nav-number">1.1.5.</span> <span class="nav-text">setp 5：在Swift类中使用你的Objective-C类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Objective-C工程中使用Swfit的类"><span class="nav-number">1.2.</span> <span class="nav-text">在Objective-C工程中使用Swfit的类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#step-1：创建一个swift文件"><span class="nav-number">1.2.1.</span> <span class="nav-text">step 1：创建一个swift文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step-2：向Objective—C文件中导入Swift头文件"><span class="nav-number">1.2.2.</span> <span class="nav-text">step 2：向Objective—C文件中导入Swift头文件</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jixin Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
