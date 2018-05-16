@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="stackoverflow上关于Objective-C关注度比较高的问题系列链接  如何在Objective-C中使用delegate原文链接《How do I create delegates in Objective-C?》 关键词  delegateObjective-C    delegate就是一个对象A代表另一个对象B处理一些事情（实现某种功能）。这里的对象A为代理方，对象B为委托方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2.CreateDelegate">
+<meta property="og:url" content="http://yoursite.com/2018/05/16/2-CreateDelegate/index.html">
+<meta property="og:site_name" content="JixinZhang">
+<meta property="og:description" content="stackoverflow上关于Objective-C关注度比较高的问题系列链接  如何在Objective-C中使用delegate原文链接《How do I create delegates in Objective-C?》 关键词  delegateObjective-C    delegate就是一个对象A代表另一个对象B处理一些事情（实现某种功能）。这里的对象A为代理方，对象B为委托方">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-16T08:34:07.084Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2.CreateDelegate">
+<meta name="twitter:description" content="stackoverflow上关于Objective-C关注度比较高的问题系列链接  如何在Objective-C中使用delegate原文链接《How do I create delegates in Objective-C?》 关键词  delegateObjective-C    delegate就是一个对象A代表另一个对象B处理一些事情（实现某种功能）。这里的对象A为代理方，对象B为委托方">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/16/2-CreateDelegate/"/>
+
+
+
+
+
+  <title>2.CreateDelegate | JixinZhang</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JixinZhang</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/16/2-CreateDelegate/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Jixin Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JixinZhang">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2.CreateDelegate</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-16T16:33:15+08:00">
+                2018-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>stackoverflow上关于Objective-C关注度比较高的问题系列<br><a href="https://stackoverflow.com/questions/tagged/objective-c?sort=frequent&amp;pageSize=15" target="_blank" rel="noopener">链接</a></p>
+</blockquote>
+<h1 id="如何在Objective-C中使用delegate"><a href="#如何在Objective-C中使用delegate" class="headerlink" title="如何在Objective-C中使用delegate"></a>如何在Objective-C中使用delegate</h1><p>原文链接<a href="https://stackoverflow.com/questions/626898/how-do-i-create-delegates-in-objective-c" target="_blank" rel="noopener">《How do I create delegates in Objective-C?》</a></p>
+<p>关键词</p>
+<blockquote>
+<p>delegate<br>Objective-C  </p>
+</blockquote>
+<p>delegate就是一个对象A代表另一个对象B处理一些事情（实现某种功能）。这里的对象A为代理方，对象B为委托方。代理方所要处理的事情是委托方通过协议指定的。这里我们提到了协议，代理方和委托放三个概念。</p>
+<ul>
+<li>协议：用来指定代理双方可以做什么和必须做什么。</li>
+<li>代理方：根据指定的协议，完成委托放需要实现的功能（需求）。</li>
+<li>委托方：根据指定的协议，指定代理方完成什么功能。</li>
+</ul>
+<p>这里举一个主机+显示器的例子来阐述这个代理模式。</p>
+<p>主机把图像信息给显示器，然后显示器显示画面。我们按照上述三个部分来对号入座：</p>
+<ul>
+<li>协议：“显示图像协议”，显示画面这件事情。</li>
+<li>代理方：显示器，根据“显示图像协议”，实现主机（委托方）需要显示画面的需求。</li>
+<li>委托方：主机，根据“显示图像协议”，指定显示器（代理方）显示画面。</li>
+</ul>
+<h2 id="具体creat一个delegate可以分为以下六步："><a href="#具体creat一个delegate可以分为以下六步：" class="headerlink" title="具体creat一个delegate可以分为以下六步："></a>具体creat一个delegate可以分为以下六步：</h2><ul>
+<li>step1：声明一个协议并在协议中明确可以做什么和必须做什么；</li>
+<li>step2：委托方添加一个属性deleget，该属性向外界说明我有一个代理职位（需要遵从step1中的协议），类比：主机上的视频接口（VGA、HDMI）；</li>
+<li>step3：委托方在需要完成某种功能的（协议中已提前确定）时候，告诉代理帮我完成这个功能，类比：主机需要显示画面；</li>
+<li>step4：代理方需要遵从step1中的协议；</li>
+<li>step5：代理方需要成为委托方的代理，类比：显示器工作VGA线连接到主机；</li>
+<li>step6：代理方在接受到委托方需要完成某种功能的信息后，实现该功能，类比：显示画面</li>
+</ul>
+<p><strong>以上六步中前三步都是在委托方中完成，后三步都是在代理方完成。</strong></p>
+<h2 id="代码展示"><a href="#代码展示" class="headerlink" title="代码展示"></a>代码展示</h2><p>协议：HostDelegate<br>委托方：Host<br>代理方：Monitor  </p>
+<h4 id="step1-申明一个协议HostDelegate"><a href="#step1-申明一个协议HostDelegate" class="headerlink" title="step1:申明一个协议HostDelegate"></a>step1:申明一个协议HostDelegate</h4><blockquote>
+<p>在Host.h中</p>
+</blockquote>
+<p>必须做：显示画面<br>可以做：播放声音</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">@class Host;</span><br><span class="line">@protocol  HostDelegate &lt;NSObject&gt;</span><br><span class="line"></span><br><span class="line">@required   //@required表示必须要做的</span><br><span class="line"></span><br><span class="line">- (void)host:(Host *) host willDisplayPicture:(NSString *)content;</span><br><span class="line"></span><br><span class="line">@optional   //@optional表示可以做但不用必须做</span><br><span class="line"></span><br><span class="line">- (void)host:(Host *) host willPlayAudio:(NSString *)content;</span><br></pre></td></tr></table></figure>
+<h4 id="step2-添加delegate属性"><a href="#step2-添加delegate属性" class="headerlink" title="step2:添加delegate属性"></a>step2:添加delegate属性</h4><blockquote>
+<p>在Host.h中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@interface Host: UIView</span><br><span class="line"></span><br><span class="line">@property (nonatomic, weak) id&lt;HostDelegate&gt; delegate;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h4 id="step3-在需要展示画面的时候调用"><a href="#step3-在需要展示画面的时候调用" class="headerlink" title="step3:在需要展示画面的时候调用"></a>step3:在需要展示画面的时候调用</h4><blockquote>
+<p>在Host.m中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//这里我们假设点击了playButton触发显示画面</span><br><span class="line">//先判断host的代理是否实现了协议中的方法，若没有实现该方法程序会crash。</span><br><span class="line">//通过 - (BOOL)respondsToSelector:(SEL)aSelector 方法判断</span><br><span class="line"></span><br><span class="line">- (IBAction)playButtonClicked:(id)sender &#123;</span><br><span class="line">    if ([self.delegate respondsToSelector:@selector(host:willDisplayPicture:)]) &#123;</span><br><span class="line">        [self.delegate host:self willDisplayPicture:@&quot;你要的画面&quot;];</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="step4-代理方需要遵从step1中的协议"><a href="#step4-代理方需要遵从step1中的协议" class="headerlink" title="step4:代理方需要遵从step1中的协议"></a>step4:代理方需要遵从step1中的协议</h4><blockquote>
+<p>在Monitor.h中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#import &quot;Host.h&quot;</span><br><span class="line"></span><br><span class="line">@interface Monitor : NSObject &lt;HostDelegate&gt;</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) Host *host;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<h4 id="step5：代理方需要成为委托方的代理"><a href="#step5：代理方需要成为委托方的代理" class="headerlink" title="step5：代理方需要成为委托方的代理"></a>step5：代理方需要成为委托方的代理</h4><blockquote>
+<p>在Monitor.m中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (Host *) host &#123;</span><br><span class="line">    if (!_host) &#123;</span><br><span class="line">        _host = [[Host alloc] init];</span><br><span class="line">        _host.delegate = self;          //Monitor成为host的代理</span><br><span class="line">    &#125;</span><br><span class="line">    return _host;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="step6：代理方在接受到委托方需要完成某种功能的信息后"><a href="#step6：代理方在接受到委托方需要完成某种功能的信息后" class="headerlink" title="step6：代理方在接受到委托方需要完成某种功能的信息后"></a>step6：代理方在接受到委托方需要完成某种功能的信息后</h4><blockquote>
+<p>在Monitor.m中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- (void)host:(Host *) host willDisplayPicture:(NSString *)content &#123;</span><br><span class="line">    NSLog(@&quot;display content = %@&quot;, content);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)host:(Host *) host willPlayAudio:(NSString *)content &#123;</span><br><span class="line">    NSLog(@&quot;playAudio content = %@&quot;, content);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="代码展示Swift"><a href="#代码展示Swift" class="headerlink" title="代码展示Swift"></a>代码展示Swift</h2><h4 id="step1-申明一个协议HostDelegate-1"><a href="#step1-申明一个协议HostDelegate-1" class="headerlink" title="step1:申明一个协议HostDelegate"></a>step1:申明一个协议HostDelegate</h4><blockquote>
+<p>在Host.swift中</p>
+</blockquote>
+<p>必须做：显示画面<br>可以做：播放声音</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@objc protocol HostDelegate: NSObjectProtocol &#123;</span><br><span class="line">    </span><br><span class="line">    func host(_ host: Host, willDisplayPicture content: String) -&gt; Void</span><br><span class="line">    </span><br><span class="line">    @objc optional func host (_ host: Host, willPlayAudio content: String) -&gt; Void</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>如果不需要添加optional的方法，则如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">protocol HostDelegate: NSObjectProtocol &#123;</span><br><span class="line">    </span><br><span class="line">    func host(_ host: Host, willDisplayPicture content: String) -&gt; Void</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="step2-添加delegate属性-1"><a href="#step2-添加delegate属性-1" class="headerlink" title="step2:添加delegate属性"></a>step2:添加delegate属性</h4><blockquote>
+<p>在Host.swift中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">class Host: UIView &#123;</span><br><span class="line">    </span><br><span class="line">    public weak var delegate:HostDelegate?   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="step3-在需要展示画面的时候调用-1"><a href="#step3-在需要展示画面的时候调用-1" class="headerlink" title="step3:在需要展示画面的时候调用"></a>step3:在需要展示画面的时候调用</h4><blockquote>
+<p>在Host.swift中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//这里我们假设点击了playButton触发显示画面</span><br><span class="line">//先判断host的代理是否实现了协议中的方法，若没有实现该方法程序会crash。</span><br><span class="line">//通过 func responds(to aSelector: Selector!) -&gt; Bool 方法判断</span><br><span class="line"></span><br><span class="line">@IBAction func playButtonClicked(_ button:UIButton) &#123;</span><br><span class="line">    </span><br><span class="line">    if (self.delegate != nil &amp;&amp;</span><br><span class="line">        (self.delegate?.responds(to: #selector(HostDelegate.host(_:willDisplayPicture:))))!) &#123;</span><br><span class="line">        self.delegate?.host(self, willDisplayPicture: &quot;你要的画面&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="step4-代理方需要遵从step1中的协议-1"><a href="#step4-代理方需要遵从step1中的协议-1" class="headerlink" title="step4:代理方需要遵从step1中的协议"></a>step4:代理方需要遵从step1中的协议</h4><blockquote>
+<p>在Monitor.swift中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">class Monitor: UIViewController, HostDelegate &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="step5：代理方需要成为委托方的代理-1"><a href="#step5：代理方需要成为委托方的代理-1" class="headerlink" title="step5：代理方需要成为委托方的代理"></a>step5：代理方需要成为委托方的代理</h4><blockquote>
+<p>在Monitor.swift中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">lazy var host: Host = &#123;</span><br><span class="line">	let host = Host.init(frame: CGRect(x: 0, y: 200, width: kScreenWidth, height: 100))</span><br><span class="line">	host.delegate = self		//Monitor成为host的代理</span><br><span class="line">	return host</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+<h4 id="step6：代理方在接受到委托方需要完成某种功能的信息后-1"><a href="#step6：代理方在接受到委托方需要完成某种功能的信息后-1" class="headerlink" title="step6：代理方在接受到委托方需要完成某种功能的信息后"></a>step6：代理方在接受到委托方需要完成某种功能的信息后</h4><blockquote>
+<p>在Monitor.swift中</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func host(_ host: Host, willDisplayPicture content: String) &#123;</span><br><span class="line">    NSLog(&quot;display content = %@&quot;, content)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func host(_ host: Host, willPlayAudio content: String) &#123;</span><br><span class="line">    NSLog(&quot;playAudio content = %@&quot;, content)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/11/1.PassingDataBetweenViewControllers/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Jixin Zhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#如何在Objective-C中使用delegate"><span class="nav-number">1.</span> <span class="nav-text">如何在Objective-C中使用delegate</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#具体creat一个delegate可以分为以下六步："><span class="nav-number">1.1.</span> <span class="nav-text">具体creat一个delegate可以分为以下六步：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码展示"><span class="nav-number">1.2.</span> <span class="nav-text">代码展示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#step1-申明一个协议HostDelegate"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">step1:申明一个协议HostDelegate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step2-添加delegate属性"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">step2:添加delegate属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step3-在需要展示画面的时候调用"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">step3:在需要展示画面的时候调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step4-代理方需要遵从step1中的协议"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">step4:代理方需要遵从step1中的协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step5：代理方需要成为委托方的代理"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">step5：代理方需要成为委托方的代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step6：代理方在接受到委托方需要完成某种功能的信息后"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">step6：代理方在接受到委托方需要完成某种功能的信息后</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码展示Swift"><span class="nav-number">1.3.</span> <span class="nav-text">代码展示Swift</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#step1-申明一个协议HostDelegate-1"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">step1:申明一个协议HostDelegate</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step2-添加delegate属性-1"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">step2:添加delegate属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step3-在需要展示画面的时候调用-1"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">step3:在需要展示画面的时候调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step4-代理方需要遵从step1中的协议-1"><span class="nav-number">1.3.0.4.</span> <span class="nav-text">step4:代理方需要遵从step1中的协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step5：代理方需要成为委托方的代理-1"><span class="nav-number">1.3.0.5.</span> <span class="nav-text">step5：代理方需要成为委托方的代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#step6：代理方在接受到委托方需要完成某种功能的信息后-1"><span class="nav-number">1.3.0.6.</span> <span class="nav-text">step6：代理方在接受到委托方需要完成某种功能的信息后</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Jixin Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
