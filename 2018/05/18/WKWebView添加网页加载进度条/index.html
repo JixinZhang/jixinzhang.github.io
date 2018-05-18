@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="##一、效果展示  ##二、主要步骤 1.添加UIProgressView属性 12@property (nonatomic, strong) WKWebView *wkWebView;@property (nonatomic, strong) UIProgressView *progressView; 2.初始化progressView 123456789- (void)viewDidLoad">
+<meta name="description" content="一、效果展示 二、主要步骤1.添加UIProgressView属性 12@property (nonatomic, strong) WKWebView *wkWebView;@property (nonatomic, strong) UIProgressView *progressView; 2.初始化progressView 123456789- (void)viewDidLoad &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WKWebView添加网页加载进度条">
 <meta property="og:url" content="http://yoursite.com/2018/05/18/WKWebView添加网页加载进度条/index.html">
 <meta property="og:site_name" content="JixinZhang">
-<meta property="og:description" content="##一、效果展示  ##二、主要步骤 1.添加UIProgressView属性 12@property (nonatomic, strong) WKWebView *wkWebView;@property (nonatomic, strong) UIProgressView *progressView; 2.初始化progressView 123456789- (void)viewDidLoad">
+<meta property="og:description" content="一、效果展示 二、主要步骤1.添加UIProgressView属性 12@property (nonatomic, strong) WKWebView *wkWebView;@property (nonatomic, strong) UIProgressView *progressView; 2.初始化progressView 123456789- (void)viewDidLoad &amp;#123;">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/2409226-fd0b88b35434be72.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2018-05-18T09:21:10.435Z">
+<meta property="og:updated_time" content="2018-05-18T09:22:36.945Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WKWebView添加网页加载进度条">
-<meta name="twitter:description" content="##一、效果展示  ##二、主要步骤 1.添加UIProgressView属性 12@property (nonatomic, strong) WKWebView *wkWebView;@property (nonatomic, strong) UIProgressView *progressView; 2.初始化progressView 123456789- (void)viewDidLoad">
+<meta name="twitter:description" content="一、效果展示 二、主要步骤1.添加UIProgressView属性 12@property (nonatomic, strong) WKWebView *wkWebView;@property (nonatomic, strong) UIProgressView *progressView; 2.初始化progressView 123456789- (void)viewDidLoad &amp;#123;">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/2409226-fd0b88b35434be72.gif?imageMogr2/auto-orient/strip">
 
 
@@ -311,10 +311,8 @@
       
 
       
-        <p>##一、效果展示</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/2409226-fd0b88b35434be72.gif?imageMogr2/auto-orient/strip" alt="WKWebProgressViewDemo.gif"></p>
-<p>##二、主要步骤</p>
-<p>1.添加UIProgressView属性</p>
+        <h2 id="一、效果展示"><a href="#一、效果展示" class="headerlink" title="一、效果展示"></a>一、效果展示</h2><p><img src="http://upload-images.jianshu.io/upload_images/2409226-fd0b88b35434be72.gif?imageMogr2/auto-orient/strip" alt="WKWebProgressViewDemo.gif"></p>
+<h2 id="二、主要步骤"><a href="#二、主要步骤" class="headerlink" title="二、主要步骤"></a>二、主要步骤</h2><p>1.添加UIProgressView属性</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@property (nonatomic, strong) WKWebView *wkWebView;</span><br><span class="line">@property (nonatomic, strong) UIProgressView *progressView;</span><br></pre></td></tr></table></figure>
 <p>2.初始化progressView</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- (void)viewDidLoad &#123;</span><br><span class="line">    [super viewDidLoad];    </span><br><span class="line">    //进度条初始化</span><br><span class="line">    self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, 2)];</span><br><span class="line">    self.progressView.backgroundColor = [UIColor blueColor];</span><br><span class="line">    //设置进度条的高度，下面这句代码表示进度条的宽度变为原来的1倍，高度变为原来的1.5倍.</span><br><span class="line">    self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);</span><br><span class="line">    [self.view addSubview:self.progressView];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -326,7 +324,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">//开始加载</span><br><span class="line">- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation &#123;</span><br><span class="line">    NSLog(@&quot;开始加载网页&quot;);</span><br><span class="line">    //开始加载网页时展示出progressView</span><br><span class="line">    self.progressView.hidden = NO;</span><br><span class="line">    //开始加载网页的时候将progressView的Height恢复为1.5倍</span><br><span class="line">    self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);</span><br><span class="line">    //防止progressView被网页挡住</span><br><span class="line">    [self.view bringSubviewToFront:self.progressView];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//加载完成</span><br><span class="line">- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation &#123;</span><br><span class="line">    NSLog(@&quot;加载完成&quot;);</span><br><span class="line">    //加载完成后隐藏progressView</span><br><span class="line">    //self.progressView.hidden = YES;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//加载失败</span><br><span class="line">- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error &#123;</span><br><span class="line">    NSLog(@&quot;加载失败&quot;);</span><br><span class="line">    //加载失败同样需要隐藏progressView</span><br><span class="line">    //self.progressView.hidden = YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>6.在dealloc中取消监听</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- (void)dealloc &#123;</span><br><span class="line">    [self.wkWebView removeObserver:self forKeyPath:@&quot;estimatedProgress&quot;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##三、github 代码地址<br><a href="https://github.com/JixinZhang/WKWebProgressViewDemo" target="_blank" rel="noopener">请戳这里</a>查看demo，如果觉得还不错请随手给个star。</p>
+<h2 id="三、github-代码地址"><a href="#三、github-代码地址" class="headerlink" title="三、github 代码地址"></a>三、github 代码地址</h2><p><a href="https://github.com/JixinZhang/WKWebProgressViewDemo" target="_blank" rel="noopener">请戳这里</a>查看demo，如果觉得还不错请随手给个star。</p>
 
       
     </div>
@@ -411,8 +409,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -470,6 +477,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、效果展示"><span class="nav-number">1.</span> <span class="nav-text">一、效果展示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、主要步骤"><span class="nav-number">2.</span> <span class="nav-text">二、主要步骤</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、github-代码地址"><span class="nav-number">3.</span> <span class="nav-text">三、github 代码地址</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
